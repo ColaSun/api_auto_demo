@@ -1,10 +1,11 @@
 import requests
 import pytest
 import allure
+import os
 
 @allure.step("登录")
 def login(s):
-    url = "http://49.235.92.12:6009/api/v1/login"
+    url = os.environ["host"]+"/api/v1/login"
     body = {
     "username": "test",
     "password": "123456"
@@ -20,7 +21,7 @@ def login(s):
 @allure.step("注册")
 def register(s,username="test1123", password="123456", mail="1233@qq.com"):
     '''注册'''
-    url = "http://49.235.92.12:6009/api/v1/register"
+    url = os.environ["host"]+"/api/v1/register"
     body = {
         "username": username,
         "password": password,
@@ -36,7 +37,7 @@ class Urse_info():
         self.s = s
     @allure.step("修改用户信息")
     def update_info(self,sex):
-        url = "http://49.235.92.12:6009/api/v1/userinfo"
+        url = os.environ["host"]+"/api/v1/userinfo"
         body = {"name": "test",
                 "sex": sex,
                 "age": 20,
@@ -47,7 +48,7 @@ class Urse_info():
 
     @allure.step("获取用户信息")
     def get_info(self):
-        url = "http://49.235.92.12:6009/api/v1/userinfo"
+        url = os.environ["host"]+"/api/v1/userinfo"
         r = self.s.get(url)
         return r.json()
 
