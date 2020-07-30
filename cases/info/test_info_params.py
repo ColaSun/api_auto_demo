@@ -2,11 +2,10 @@ import pytest
 from cases.common_function import login, Urse_info
 from common.read_yml import get_yml
 import os
-import allure
+from setting import base_dir
 
 
-curth = os.path.dirname(os.path.realpath(__file__))
-ymlpath = os.path.join(curth, 'update_info.yml')
+ymlpath = os.path.join(base_dir, 'test_data', 'update_info.yml')
 info_data =get_yml(ymlpath)
 
 
@@ -18,14 +17,12 @@ info_data =get_yml(ymlpath)
 
                          ]
 )
-@allure.title("修改用户信息")
-@allure.story("修改用户的信息")
 def test_01(login_fix, test_input, expected):
     print("用例")
     s = login_fix
-    u = Urse_info(s)
     print(s.headers)
-    r1 = u.update_info(sex=test_input)
+    a = Urse_info(s)
+    r1 =a.update_info(sex=test_input)
     assert r1["code"] == expected["code"]
     assert r1["message"] == expected["message"]
 
@@ -34,8 +31,3 @@ def test_01(login_fix, test_input, expected):
 def test_02():
     "跳过这条用例"
     print("跳过的用例")
-
-@pytest.mark.xxx
-def test_03():
-    print("xxx模块用例")
-
