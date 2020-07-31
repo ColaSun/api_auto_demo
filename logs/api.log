@@ -1,0 +1,5 @@
+2020-07-31 16:24:23 - api - "D:\request_api\pro_2020\cases\common_function.py:23" - login - DEBUG - 获取token:d0acc90129a2548e409937a87c3f7e41a4f2aa3d
+2020-07-31 16:24:23 - api - "D:\request_api\pro_2020\cases\common_function.py:56" - update_info - DEBUG - 修改用户信息:<Response [200]>
+
+2020-07-31 16:24:23 - api - "D:\request_api\pro_2020\cases\common_function.py:63" - get_info - DEBUG - 获取用户信息:<Response [200]>
+

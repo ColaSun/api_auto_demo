@@ -3,6 +3,7 @@ import requests
 import allure
 
 
+
 @allure.story("修改个人信息，查看是否修改成功")
 def test_get_info():
     s = requests.session()

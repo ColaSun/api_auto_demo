@@ -2,6 +2,13 @@ import requests
 import pytest
 import allure
 import os
+from nb_log import LogManager
+from nb_log_config import LOG_PATH
+
+
+logger = LogManager(logger_name='api').get_logger_and_add_handlers(is_add_stream_handler=True,
+                                                      log_filename='api.log',
+                                                                   log_path=LOG_PATH )
 
 @allure.step("登录")
 def login(s):
@@ -13,6 +20,7 @@ def login(s):
     r = requests.post(url, json=body, verify=False)
     print(r.json())
     token = r.json()['token']
+    logger.debug("获取token:%s"% token)
     h = {'Authorization': 'Token %s'% token}
     s.headers.update(h)
     return r.json()
@@ -28,6 +36,7 @@ def register(s,username="test1123", password="123456", mail="1233@qq.com"):
         "mail": mail
     }
     r = s.post(url, json=body)
+    logger.debug("注册接口返回:%s" % r)
     return r
 
 
@@ -44,12 +53,14 @@ class Urse_info():
                 "mail": "283340479@qq.com"}
         r = self.s.post(url, json=body)
         print(r.json())
+        logger.debug("修改用户信息:%s" % r)
         return r.json()
 
     @allure.step("获取用户信息")
     def get_info(self):
         url = os.environ["host"]+"/api/v1/userinfo"
         r = self.s.get(url)
+        logger.debug("获取用户信息:%s" % r)
         return r.json()
 
 
