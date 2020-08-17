@@ -1,8 +1,3 @@
-test_info_params_data:
-- [M, {'message': 'update some data!', 'code': 0}]
-- [F, {'message': 'update some data!', 'code': 0}]
-
-
-
-
-test_xxxx:
+test_data:
+- [M, {'message': 'update', 'code': 0}]
+- [F, {'message': 'update', 'code': 0}]

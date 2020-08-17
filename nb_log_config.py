@@ -63,8 +63,4 @@ import logging
 # FORMATTER_KIND = 5  # 默认选择第几个模板
 
 
-import os
-base_dir = os.path.dirname(os.path.realpath(__file__))
-LOG_PATH = os.path.join(base_dir, 'logs')
-
 
