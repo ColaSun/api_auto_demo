@@ -6,10 +6,10 @@ import pytest
 # （这一段是指从命令行传入的时候能够接收过来,实际上等于加到整个项目的配置上了）
 # 添加pytest命令行参数     parser是内置fixture       # default="xxx" 不传就自动调用默认值
 def pytest_addoption(parser):
-    parser.addoption("--base-url",
+    parser.addoption("--host",
                      action="store",
                      default="http://49.235.92.12:6009",
-                     help="base-url option: url地址"
+                     help="host option: url地址"
                      )
 
 
@@ -17,7 +17,7 @@ def pytest_addoption(parser):
 @pytest.fixture(scope="session", autouse=True)
 def base_url_fixture(request):
     '''获取命令行参数'''
-    print("当前用例运行测试环境为：{}".format(request.config.getoption("--base-url")))
+    print("当前用例运行测试环境为：{}".format(request.config.getoption("--host")))
     # 内置fixture,request获取配置，再获取option的变量值'--base-url'
-    os.environ["base_url"] = request.config.getoption("--base-url")
-    # == os.environ['base_url'] = 'http://49.235.92.12:6009'
+    os.environ["host"] = request.config.getoption("--host")
+    # == os.environ['host'] = 'http://49.235.92.12:6009'
