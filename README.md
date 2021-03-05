@@ -15,4 +15,5 @@
  
  # 参数配置pytest.ini
  自己标注的内容，加注释 markers = info: Run info module cases
+ 
  命令行默认带上的参数 addopts = -s --alluredir ./report/allure --base-url=http://xxxx.xx:xxxx
